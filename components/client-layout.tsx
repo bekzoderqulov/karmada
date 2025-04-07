@@ -1,9 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
-import { ClientProviders } from "@/components/client-providers";
-import { SiteHeader } from "@/components/site-header";
-import { PurchaseProvider } from "@/context/purchase-context";
+import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -58,5 +55,24 @@ export default function RootLayout({
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
+  );
+}
+
+// filepath: /home/monster/Desktop/newkarmada1copy3copy1 (copy 4)/components/client-layout.tsx
+"use client";
+
+import { ReactNode } from "react";
+import { ClientProviders } from "@/components/client-providers";
+import { SiteHeader } from "@/components/site-header";
+import { PurchaseProvider } from "@/context/purchase-context";
+
+export function ClientLayout({ children }: { children: ReactNode }) {
+  return (
+    <ClientProviders>
+      <SiteHeader />
+      <main className="min-h-screen">
+        <PurchaseProvider>{children}</PurchaseProvider>
+      </main>
+    </ClientProviders>
   );
 }
