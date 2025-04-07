@@ -15,9 +15,18 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useToast } from "@/hooks/use-toast"
 import { useNotification } from "@/context/notification-context"
-import { useTranslation } from "i18next"
+import { useTranslation } from "react-i18next"
+import { PurchaseProvider } from '@/context/purchase-context';
 
-export default function EditCoursePage({ params }: { params: { id: string } }) {
+export default function App({ Component, pageProps }) {
+  return (
+    <PurchaseProvider>
+      <Component {...pageProps} />
+    </PurchaseProvider>
+  );
+}
+
+export function EditCoursePage({ params }: { params: { id: string } }) {
   const { toast } = useToast()
   const router = useRouter()
   const { addNotification } = useNotification()
