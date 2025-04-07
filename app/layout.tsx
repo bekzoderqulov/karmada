@@ -1,14 +1,12 @@
 "use client";
 
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import { ClientProviders } from "@/components/client-providers"
-import { SiteHeader } from "@/components/site-header"
-import { PurchaseProvider } from "@/context/purchase-context";
+import type React from "react";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { ClientLayout } from "@/components/client-layout";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "IT English Academy",
@@ -19,12 +17,12 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/apple-icon.png",
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -57,13 +55,8 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <ClientProviders>
-          <SiteHeader />
-          <main className="min-h-screen">
-            <PurchaseProvider>{children}</PurchaseProvider>
-          </main>
-        </ClientProviders>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
-  )
+  );
 }
