@@ -27,13 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Script to apply theme before page load to avoid flash */}
+        {/* Sahifa yuklanishidan oldin mavzuni qo'llash uchun skript */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
-                  // Apply dark mode if saved in localStorage
+                  // Mahalliy xotirada saqlangan mavzuni qo'llash
                   const theme = localStorage.getItem('theme');
                   if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                     document.documentElement.classList.add('dark');
@@ -41,7 +41,7 @@ export default function RootLayout({
                     document.documentElement.classList.remove('dark');
                   }
                   
-                  // Apply language if saved in localStorage
+                  // Mahalliy xotirada saqlangan tilni qo'llash
                   const language = localStorage.getItem('language');
                   if (language && ['uz', 'ru', 'en'].includes(language)) {
                     document.documentElement.lang = language;
