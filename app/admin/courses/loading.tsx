@@ -1,3 +1,5 @@
+"use client"; // Add this directive to mark the file as a client component
+
 import React, { createContext, useContext } from 'react';
 
 const PurchaseContext = createContext(null);
@@ -18,8 +20,6 @@ export function usePurchase() {
   }
   return context;
 }
-
-import { PurchaseProvider } from '@/context/purchase-context';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
