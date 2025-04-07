@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/context/auth-context";
 import { useLanguage } from "@/context/language-context";
-import { usePurchase } from "@/context/purchase-context";
+import { usePurchase, PurchaseProvider } from "@/context/purchase-context";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -43,9 +43,11 @@ export default function CartPage() {
   }
 
   return (
-    <div className="container mx-auto py-16 px-4">
-      {/* Your cart page content goes here */}
-    </div>
+    <PurchaseProvider>
+      <div className="container mx-auto py-16 px-4">
+        {/* Your cart page content goes here */}
+      </div>
+    </PurchaseProvider>
   );
 }
 

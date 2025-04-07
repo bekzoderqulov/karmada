@@ -1,9 +1,12 @@
+"use client";
+
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ClientProviders } from "@/components/client-providers"
 import { SiteHeader } from "@/components/site-header"
+import { PurchaseProvider } from "@/context/purchase-context";
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -56,29 +59,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <ClientProviders>
           <SiteHeader />
-          <main className="min-h-screen">{children}</main>
+          <main className="min-h-screen">
+            <PurchaseProvider>{children}</PurchaseProvider>
+          </main>
         </ClientProviders>
       </body>
     </html>
   )
 }
-
-import "./globals.css"
-
-import "./globals.css"
-
-import "./globals.css"
-
-import "./globals.css"
-
-import "./globals.css"
-
-import "./globals.css"
-
-import "./globals.css"
-
-import "./globals.css"
-
-
-
-import './globals.css'
