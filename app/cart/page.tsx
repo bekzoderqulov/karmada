@@ -45,6 +45,7 @@ export default function CartPage() {
   return (
     <PurchaseProvider>
       <div className="container mx-auto py-16 px-4">
+        <h1>Cart Page</h1>
         {/* Your cart page content goes here */}
       </div>
     </PurchaseProvider>
