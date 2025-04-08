@@ -1,13 +1,12 @@
-"use client";
-
+// ❌ "use client" NI OLIB TASHLAYMIZ — chunki bu server component
 import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ClientLayout } from "@/components/client-layout";
-
+import ClientLayout from "@/components/client-layout";
 const inter = Inter({ subsets: ["latin"] });
 
+// ✅ metadata faqat server componentda bo'lishi kerak
 export const metadata: Metadata = {
   title: "IT English Academy",
   description: "Learn English for IT professionals",
@@ -27,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Sahifa yuklanishidan oldin mavzuni qo'llash uchun skript */}
+        {/* Tema va tilni sozlash */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -39,6 +38,7 @@ export default function RootLayout({
                   } else {
                     document.documentElement.classList.remove('dark');
                   }
+
                   const language = localStorage.getItem('language');
                   if (language && ['uz', 'ru', 'en'].includes(language)) {
                     document.documentElement.lang = language;
@@ -55,24 +55,5 @@ export default function RootLayout({
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
-  );
-}
-
-// filepath: /home/monster/Desktop/newkarmada1copy3copy1 (copy 4)/components/client-layout.tsx
-"use client";
-
-import { ReactNode } from "react";
-import { ClientProviders } from "@/components/client-providers";
-import { SiteHeader } from "@/components/site-header";
-import { PurchaseProvider } from "@/context/purchase-context";
-
-export function ClientLayout({ children }: { children: ReactNode }) {
-  return (
-    <ClientProviders>
-      <SiteHeader />
-      <main className="min-h-screen">
-        <PurchaseProvider>{children}</PurchaseProvider>
-      </main>
-    </ClientProviders>
   );
 }
