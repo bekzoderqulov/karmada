@@ -1,5 +1,4 @@
-"use client";
-
+// ❌ "use client" yo‘q! Boshida hech nima yozilmagan!
 import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -27,21 +26,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Sahifa yuklanishidan oldin mavzuni qo'llash uchun skript */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
-                  // Mahalliy xotirada saqlangan mavzuni qo'llash
                   const theme = localStorage.getItem('theme');
                   if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                     document.documentElement.classList.add('dark');
                   } else {
                     document.documentElement.classList.remove('dark');
                   }
-                  
-                  // Mahalliy xotirada saqlangan tilni qo'llash
                   const language = localStorage.getItem('language');
                   if (language && ['uz', 'ru', 'en'].includes(language)) {
                     document.documentElement.lang = language;
