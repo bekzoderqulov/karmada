@@ -1,9 +1,10 @@
-// ❌ "use client" yo‘q! Boshida hech nima yozilmagan!
 import type React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClientLayout } from "@/components/client-layout";
+import { ClientProviders } from "@/components/client-providers";
+import { PurchaseProvider } from "@/context/purchase-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -50,7 +51,11 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <ClientLayout>{children}</ClientLayout>
+        <ClientProviders>
+          <PurchaseProvider>
+            <ClientLayout>{children}</ClientLayout>
+          </PurchaseProvider>
+        </ClientProviders>
       </body>
     </html>
   );
